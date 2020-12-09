@@ -25,7 +25,7 @@ func main() {
 		DisableKeepAlives:     false, //prevent reuse of connections
 		MaxIdleConns:          100,   //Sets size of connection pool to 100 connections. Accross all hosts.
 		MaxIdleConnsPerHost:   10,
-		IdleConnTimeout:       90 * time.Second, //Maximum time an idle conncection will remain idle before closing itself
+		IdleConnTimeout:       90 * time.Second, //Maximum time an idle connection will remain idle before closing itself
 		ResponseHeaderTimeout: 60 * time.Second, //Maximum time to wait for response headers after request has been completely sent
 		//Other options. Proxy, etc. We'll see some in next sections.
 	}
@@ -41,7 +41,7 @@ func main() {
 	req, err := http.NewRequest("GET", "http://localhost:8080/forPostClient", buf)
 
 	//All of the elements we saw on the previous video
-	//are accesible Here
+	//are accessible Here
 	req.Header.Set("Accept", "text/html")
 
 	//Does the Request
@@ -55,6 +55,6 @@ func main() {
 	if err != nil {
 		log.Println("Error Reading Body")
 	}
-	fmt.Println("Client3:: Recieved:")
+	fmt.Println("Client3:: Received:")
 	fmt.Println(string(body))
 }

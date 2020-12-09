@@ -25,7 +25,7 @@ func main() {
 	fmt.Println("Proto: " + proto)
 
 	contLen := resp.ContentLength
-	fmt.Printf("Content Lenght: %d\n", contLen)
+	fmt.Printf("Content Length: %d\n", contLen)
 
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
@@ -33,6 +33,6 @@ func main() {
 	}
 	defer resp.Body.Close()
 
-	fmt.Println("Client1:: Recieved:")
+	fmt.Println("Client1:: Received:")
 	fmt.Println(string(body))
 }
