@@ -23,16 +23,17 @@ func myHandlerFunc(w http.ResponseWriter, r *http.Request) {
 	//Write Status Code
 	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "application/text")
-	fmt.Fprintln(w, "Example-1; Request was succesful")
+	fmt.Fprintln(w, "Example-1; Request was successful")
 }
 
 func myHandlerFunc2(w http.ResponseWriter, r *http.Request) {
 	//Write Status Code
 	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "application/text")
-	fmt.Fprintln(w, "Example-2; Request was succesful")
+	fmt.Fprintln(w, "Example-2; Request was successful")
 }
 
+// HeaderDecorator takes http.Handler and returns http.Handler
 func HeaderDecorator(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Passed-Through-Decorator", "YES")
@@ -40,14 +41,16 @@ func HeaderDecorator(h http.Handler) http.Handler {
 	}) //returns an HTTP Handler, http.HandlerFunc( returns an http handler
 }
 
-type HttpDecorator func(http.Handler) http.Handler
+// HTTPDecorator type that is a function that takes http.Handler and returns http.Handler
+type HTTPDecorator func(http.Handler) http.Handler
 
-func LogDecoratorCreator(logger *log.Logger) HttpDecorator {
+// LogDecoratorCreator takes a *log.logger and returns HTTPDecorator
+func LogDecoratorCreator(logger *log.Logger) HTTPDecorator {
 	return func(h http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			logger.Printf(r.RequestURI+": We have a connection from %s", r.RemoteAddr)
 			defer logger.Println("Connection Closed")
 			h.ServeHTTP(w, r)
 		}) //returns an HTTP Handler, http.HandlerFunc( returns an http handler
-	} //Returns a function that takes a hanlder and returns a handler
+	} //Returns a function that takes a handler and returns a handler
 }
