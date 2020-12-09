@@ -55,5 +55,5 @@ func myHandlerFunc(w http.ResponseWriter, r *http.Request) {
 	//Write Status Code
 	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "application/text")
-	fmt.Fprintln(w, "Example-1; Request was succesful")
+	fmt.Fprintln(w, "Example-1; Request was successful")
 }
