@@ -17,12 +17,12 @@ func TestHandlers(t *testing.T) {
 	//you can get the full response
 	resp := recorder.Result()
 
-	//Then you would be able to check all of the elemnts in the response
+	//Then you would be able to check all of the elements in the response
 	//For example Status Code
 	if resp.StatusCode != http.StatusOK {
 		t.Errorf("Test failed, expected: Status OK (200), got: %d.", resp.StatusCode)
 	}
-	expectedBody := "Request was succesful"
+	expectedBody := "Request was successful"
 	if recorder.Body.String() != expectedBody {
 		t.Errorf("Test failed, expected: %s, got: %s.", expectedBody, recorder.Body.String())
 	}
