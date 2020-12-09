@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "src/api/handlers"
+		},
+		{
+			"path": "src/api/repository"
+		}
+	],
+    "settings": {
+        "cSpell.enabled": false
+    }
+}
