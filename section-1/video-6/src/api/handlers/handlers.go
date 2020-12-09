@@ -4,14 +4,16 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/gorilla/mux"
 	"github.com/PacktPublishing/Hands-on-Microservices-with-Go/section-1/video-6/src/api/repository"
+	"github.com/gorilla/mux"
 )
 
+// Handlers holds a pointer to the timeZone repository
 type Handlers struct {
 	Repo *repository.Repository
 }
 
+// All returns all timezones
 func (h *Handlers) All(w http.ResponseWriter, r *http.Request) {
 	tzcs, err := h.Repo.FindAll()
 	if err != nil {
@@ -26,6 +28,7 @@ func (h *Handlers) All(w http.ResponseWriter, r *http.Request) {
 	ok200(w, string(jr))
 }
 
+// GetByTZ returns json representation of the timeZone
 func (h *Handlers) GetByTZ(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	tz, ok := params["timeZone"]
@@ -46,6 +49,7 @@ func (h *Handlers) GetByTZ(w http.ResponseWriter, r *http.Request) {
 	ok200(w, string(jr))
 }
 
+// Delete removes timezone from the collection
 func (h *Handlers) Delete(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	tz, ok := params["timeZone"]
@@ -67,6 +71,7 @@ func (h *Handlers) Delete(w http.ResponseWriter, r *http.Request) {
 	ok200(w, "Element succesfully deleted.")
 }
 
+// Insert a new timezone into the collection
 func (h *Handlers) Insert(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 
@@ -86,6 +91,7 @@ func (h *Handlers) Insert(w http.ResponseWriter, r *http.Request) {
 	ok200(w, "Element succesfully inserted.")
 }
 
+// Update the timezone in the collection
 func (h *Handlers) Update(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	tz, ok := params["timeZone"]

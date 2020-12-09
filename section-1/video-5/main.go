@@ -9,7 +9,7 @@ import (
 )
 
 var conversionMap = map[string]string{
-	"ASR": "-3h",     //North America Atlantinc Standard Time
+	"ASR": "-3h",     //North America Atlantic Standard Time
 	"EST": "-5h",     //North America Eastern Standard Time
 	"BST": "+1h",     //British Summer Time
 	"IST": "+5h30m",  //Indian Standard Time
