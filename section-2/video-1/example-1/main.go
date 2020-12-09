@@ -17,6 +17,7 @@ func main() {
 
 func getHandler(w http.ResponseWriter, r *http.Request) {
 
+	// Proto is the version
 	proto := r.Proto
 	fmt.Fprintln(w, "Proto: "+proto)
 

@@ -1,9 +1,10 @@
 # Packt Publishing - Hands on Microservices with Go
-# Section 2 - Video 1 - HTTP Handler Functions - The Request Object
+
+## Section 2 - Video 1 - HTTP Handler Functions - The Request Object
 
 ## Learn More
 
-[Go Documentation - http.Request Type](https://golang.org/pkg/net/http/#Request)
+[Go Documentation - http. Request Type](https://golang.org/pkg/net/http/#Request)
 
 [Wikipedia List Of HTTP Headers](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
 
