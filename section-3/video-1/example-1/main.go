@@ -21,5 +21,7 @@ func main() {
 		log.Println("Error Unmarshalling: " + err.Error())
 	}
 	fmt.Println(ex1Dat[1])
+	fmt.Println(ex1Dat[2])
+	fmt.Println(ex1Dat[0])
 
 }

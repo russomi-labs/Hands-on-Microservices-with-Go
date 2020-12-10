@@ -6,6 +6,7 @@ import (
 	"log"
 )
 
+// MyStruct : describes json data
 type MyStruct struct {
 	Int       int     `json:"integer"`
 	Float     float64 `json:"float"`
@@ -31,7 +32,7 @@ func main() {
 		"substruct2":{
 			"integer":98,
 			"array":[9,8,7,6,5,4,3,2,1]
-		}		
+		}
 	}`)
 
 	var myStruct *MyStruct
