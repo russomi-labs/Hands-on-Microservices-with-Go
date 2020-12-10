@@ -21,7 +21,7 @@ func main() {
 	for i := 0; i < 50; i++ {
 
 		//We do the sleep when creating the goroutines. Not on the goroutines.
-		time.Sleep(10 * time.Microsecond)
+		time.Sleep(20 * time.Microsecond)
 
 		go func(i int) {
 			wg.Add(1)

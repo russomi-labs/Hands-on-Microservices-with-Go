@@ -18,21 +18,26 @@ func main() {
 
 type key int
 
+// Session key is an iota
+// iota is a predeclared identifier representing the untyped integer ordinal
+// number of the current const specification in a (usually parenthesized)
+// const declaration. It is zero-indexed.
 const (
 	Session key = iota
 	Authorized
 	SessionData
 )
 
+// AddSessionData takes a http.Handler and returns a http.Handler
 func AddSessionData(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		session := r.Header.Get("Session")
 		if session != "" {
 			sessionData := repo.GetSessionData(session)
-			//Logic to validate that session was valid...
+			// Logic to validate that session was valid...
 			//.....
 
-			//Add data to context
+			// Add data to context
 			ctx := context.WithValue(r.Context(), Session, session)
 			ctx = context.WithValue(ctx, Authorized, true)
 			ctx = context.WithValue(ctx, SessionData, sessionData)

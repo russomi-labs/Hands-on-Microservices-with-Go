@@ -1,5 +1,6 @@
 # Packt Publishing - Hands on Microservices with Go
-# Section 2 - Video 6 - The Context Package
+
+## Section 2 - Video 6 - The Context Package
 
 ## Learn More
 
