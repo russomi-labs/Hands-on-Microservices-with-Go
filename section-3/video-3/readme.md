@@ -1,14 +1,19 @@
 # Packt Publishing - Hands on Microservices with Go
-# Section 3 - Video 3 - Introduction to gRPC and Protocol Buffers
+
+## Section 3 - Video 3 - Introduction to gRPC and Protocol Buffers
 
 ## Install Protocol Buffers Compiler
 
-```
+``` bash
 ### Change dir to your Downloads folder
 cd ~/Downloads
 
 ### Make sure you grab the latest version
 curl -OL https://github.com/google/protobuf/releases/download/v3.3.0/protoc-3.3.0-linux-x86_64.zip
+
+### or
+
+https://grpc.io/docs/protoc-installation/
 
 ### Unzip
 unzip protoc-3.3.0-linux-x86_64.zip -d protoc3
@@ -31,7 +36,6 @@ go get -u github.com/golang/protobuf/protoc-gen-go
 
 ```
 
-
 ## Generate code
 
 ´´´
@@ -41,7 +45,6 @@ cd path/to/proto/folder
 protoc --go_out=plugins=grpc:. *.proto
 
 ´´´
-
 
 ## Learn More
 
