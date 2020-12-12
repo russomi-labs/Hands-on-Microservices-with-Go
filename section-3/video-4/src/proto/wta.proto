@@ -5,6 +5,7 @@ import "google/protobuf/timestamp.proto";
 option java_multiple_files = true;
 option java_package = "packt.microservices.go.fibonacci";
 option java_outer_classname = "FibonacciProto";
+option go_package = "github.com/PacktPublishing/Hands-on-Microservices-with-Go/section-3/video-4/src/proto/WTA";
 
 package WTA;
 
@@ -21,7 +22,7 @@ message Ranking {
   uint32 playerId = 1;
   google.protobuf.Timestamp rankingDate = 2;
   uint32 ranking = 3;
-  float rankingPoints = 4; 
+  float rankingPoints = 4;
 }
 
 message PlayerWithRanking {
