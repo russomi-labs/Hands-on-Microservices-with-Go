@@ -23,12 +23,13 @@ sudo docker volume create s3v6pgdata
 
 ### Restore the data from the backup to the Data Volume
 
-**VERY IMPORTANT:** YOU NEED TO CHANGE $YOURHOME TO THE FULL PATH OF YOUR HOME DIRECTORY
+**VERY IMPORTANT:** YOU NEED TO CHANGE $DATA_PATH TO THE FULL PATH OF YOUR DATA DIRECTORY
 
 ``` bash
+export DATA_PATH="/Users/hpe_mrusso/Documents/Projects/russomi-labs/Hands-on-Microservices-with-Go/section-3/video-4/data"
 
-sudo docker run -it --name restore-data-container -v s3v6pgdata:/volume -v /home/emiliano/go/src/github.com/PacktPublishing/Hands-on-Microservices-with-Go/section-3/video-4/data:/backup ubuntu \
-    sh -c "rm -rf /volume/* /volume/..?* /volume/.[!.]* ; tar -C /volume/ -xjf /backup/s3v6.tar.bz2"
+sudo docker run -it --name restore-data-container -v s3v6pgdata:/volume -v ${DATA_PATH}:/backup ubuntu \
+    sh -c 'rm -rf /volume/* /volume/..?* /volume/.[!.]* ; tar -C /volume/ -xjf /backup/s3v6.tar.bz2'
 
 ```
 
@@ -36,7 +37,7 @@ sudo docker run -it --name restore-data-container -v s3v6pgdata:/volume -v /home
 
 ``` bash
 
-sudo docker run --name postgres -v s3v6pgdata:/var/lib/postgresql/data -p 5432:5432 -e POSTGRES_PASSWORD=packt -e POSTGRES_USER=packt -e POSTGRES_DB=wta -d postgres
+sudo docker run --name postgres -v s3v6pgdata:/var/lib/postgresql/data -p 5432:5432 -e POSTGRES_PASSWORD=packt -e POSTGRES_USER=packt -e POSTGRES_DB=wta -d postgres:10
 
 ```
 
@@ -82,6 +83,8 @@ select count(*) from players;
 #Count of Rankings
 select count(*) from rankings;
 
+# quit
+\q
 ```
 
 ## Credits
@@ -103,4 +106,7 @@ This video uses the following Dataset: (<https://www.kaggle.com/joaoevangelista/
 [The GRPC Blog](https://grpc.io/blog/)
 
 [GRPC Beyond the Basics](https://blog.gopheracademy.com/advent-2017/go-grpc-beyond-basics/)
+
 [Handling Errors in GRPC](https://hackernoon.com/handling-errors-in-golang-grpc-and-go-kit-services-d0fa0a112449)
+
+[Quick start](https://grpc.io/docs/languages/go/quickstart/)
