@@ -14,6 +14,9 @@ cd ~
 mkdir certs
 cd certs
 
+# Get "https://localhost:8443/hello": x509: certificate relies on legacy Common Name field, use SANs or temporarily enable Common Name matching with GODEBUG=x509ignoreCN=0
+export GODEBUG=x509ignoreCN=0
+
 openssl genrsa -out server.key 2048
 openssl ecparam -genkey -name secp384r1 -out server.key
 
