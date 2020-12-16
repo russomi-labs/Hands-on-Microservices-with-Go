@@ -1,13 +1,14 @@
 # Packt Publishing - Hands on Microservices with Go
-# Section 4 - Video 2 - TLS Certificates with Let's Encrypt
 
-## Disclaimer
+## Section 4 - Video 2 - TLS Certificates with Let's Encrypt
+
+### Disclaimer
 
 The contents of the following video are intended as an **introduction** to securing an http endpoint with https. It is not intended as a definitive guide, if your application deals with sensitive data consider consulting the advice of a security professional. Also, consider that new vulnerabilities are discovered every day in security practices and software libraries, so the advice provided here might be obsolete and insecure by the time you read it.
 
 ### Build with target OS and Processor Architecture
 
-```
+``` bash
  env GOOS=linux GOARCH=amd64 go build -o packt-ht
 tps-test .
 
@@ -28,5 +29,3 @@ tps-test .
 [SSL Server Test](https://www.ssllabs.com/ssltest/)
 
 [How To Build Go Executables for Multiple Platforms on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-build-go-executables-for-multiple-platforms-on-ubuntu-16-04)
-
-
