@@ -1,10 +1,12 @@
 # Packt Publishing - Hands on Microservices with Go
-# Section 4 - Video 3 - Access Tokens and JWT
+
+## Section 4 - Video 3 - Access Tokens and JWT
 
 ### Setup Environment
 
 #### Create DB Data Volume
-```
+
+``` bash
 
 sudo docker volume create usersmariadb
 
@@ -12,18 +14,20 @@ sudo docker volume create usersmariadb
 
 #### Fill up Data Volume
 
-**$USERHOME** should be your home directory, where go is installed.
+**$DATA_PATH** should be your home directory, where go is installed.
 
-```
+``` bash
 
-sudo docker run -it -v usersmariadb:/volume -v $USERHOME/go/src/github.com/PacktPublishing/Hands-on-Microservices-with-Go/section-4/video-3/data/:/backup ubuntu \
-    sh -c "rm -rf /volume/* /volume/..?* /volume/.[!.]* ; tar -C /volume/ -xjf /backup/usersmariadb.tar.bz2"
+export DATA_PATH="/Users/hpe_mrusso/Documents/Projects/russomi-labs/Hands-on-Microservices-with-Go/section-4/video-3/data"
 
+sudo docker run -it -v usersmariadb:/volume -v ${DATA_PATH}:/backup ubuntu \
+    sh -c 'rm -rf /volume/* /volume/..?* /volume/.[!.]* ; tar -C /volume/ -xjf /backup/usersmariadb.tar.bz2'
 
 ```
 
 #### Start MariaDB
-```
+
+``` bash
 
 sudo docker run --name users-mariadb -v usersmariadb:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root-password -p 3306:3306 -d mariadb
 
@@ -31,9 +35,45 @@ sudo docker run --name users-mariadb -v usersmariadb:/var/lib/mysql -e MYSQL_ROO
 
 #### Start Redis
 
-```
+``` bash
 
 sudo docker run --name sessions-redis -p 6379:6379 -d redis
+
+```
+
+#### Start Services
+
+1. sessions-service
+2. users-service
+3. api-gateway
+
+``` BASH
+# sessions-service
+cd video-3/src/sessions-service
+
+go mod init github.com/PacktPublishing/Hands-on-Microservices-with-Go/section-4/video-3/src/sessions-service
+
+go install
+
+go run main.go
+
+# users-service
+cd video-3/src/users-service
+
+go mod init github.com/PacktPublishing/Hands-on-Microservices-with-Go/section-4/video-3/src/users-service
+
+go install
+
+go run main.go
+
+# api-gateway
+cd video-3/src/api-gateway
+
+go mod init github.com/PacktPublishing/Hands-on-Microservices-with-Go/section-4/video-3/src/api-gateway
+
+go install
+
+go run main.go
 
 ```
 
@@ -41,7 +81,7 @@ sudo docker run --name sessions-redis -p 6379:6379 -d redis
 
 Passwords are encrypted but if you need to test the example. The passwords are based on the the following logic, if userID%10 is 0 then the password for the user will be "academia-racing-club". The same logic applies for the different values of userID%10, use the following guide:
 
-```
+``` bash
 
 userID%10 == 0 => password = "academia-racing-club"
 userID%10 == 1 => password = "san-lorenzo-de-almagro"
@@ -53,7 +93,6 @@ userID%10 == 6 => password = "sacachispas-futbol-club"
 userID%10 == 7 => password = "defensa-y-justicia"
 userID%10 == 8 => password = "chacarita-juniors"
 userID%10 == 9 => password = "arsenal-de-sarandi"
-
 
 ```
 
@@ -72,4 +111,3 @@ userID%10 == 9 => password = "arsenal-de-sarandi"
 [RFC 7519: JSON Web Token (JWT)](https://tools.ietf.org/html/rfc7519)
 
 [Wikipedia HMAC](https://en.wikipedia.org/wiki/HMAC)
-
