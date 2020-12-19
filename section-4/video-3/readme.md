@@ -29,7 +29,7 @@ sudo docker run -it -v usersmariadb:/volume -v ${DATA_PATH}:/backup ubuntu \
 
 ``` bash
 
-sudo docker run --name users-mariadb -v usersmariadb:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root-password -p 3306:3306 -d mariadb
+sudo docker run --name users-mariadb -v usersmariadb:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root-password -p 3306:3306 -d mariadb:10.3
 
 ```
 
